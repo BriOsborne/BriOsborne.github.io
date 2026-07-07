@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AP Process Navigator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav-shell" aria-label="Primary navigation">
+        <a class="brand" href="#home" aria-label="AP Process Navigator home">
+          <span class="brand-mark">AP</span>
+          <span>Process Navigator</span>
+        </a>
+        <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="navLinks">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="#home">Home</a>
+          <a href="#workflow">Workflow Navigator</a>
+          <a href="#exceptions">Exception Guide</a>
+          <a href="#glossary">Glossary</a>
+          <a href="#dashboard">KPI Dashboard</a>
+          <a href="#about">About</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section" id="home">
+        <div class="hero-glow hero-glow-one"></div>
+        <div class="hero-glow hero-glow-two"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Static decision-support tool</p>
+          <h1>AP Process Navigator</h1>
+          <p class="subtitle">Interactive Accounts Payable workflow assistant</p>
+          <p class="hero-copy">
+            Navigate invoice review, Zone routing, PO validation, IR checks, utility invoice handling, and
+            exception escalation with a clear step-by-step guide built from the AP workflow map.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#workflow" data-workflow="ap" data-start-node="reviewEmail">Start from Email</a>
+            <a class="button secondary" href="#workflow" data-workflow="ap" data-start-node="openTracker">Start from Zone Tracker</a>
+          </div>
+        </div>
+
+        <div class="quick-links" aria-label="Workflow shortcut cards">
+          <a class="glass-card shortcut-card" href="#workflow">
+            <span>Workflow Navigator</span>
+            <strong>Move through email intake, Zone review, PO matching, IR checks, and routing decisions.</strong>
+          </a>
+          <a class="glass-card shortcut-card" href="#exceptions">
+            <span>Exception Guide</span>
+            <strong>Find recommended actions for common blockers.</strong>
+          </a>
+          <a class="glass-card shortcut-card" href="#glossary">
+            <span>Glossary</span>
+            <strong>Understand AP tools, roles, and terms.</strong>
+          </a>
+          <a class="glass-card shortcut-card" href="#dashboard">
+            <span>Dashboard</span>
+            <strong>Review sample process metrics and trends.</strong>
+          </a>
+        </div>
+      </section>
+
+      <section class="section workflow-section" id="workflow">
+        <div class="section-heading">
+          <p class="eyebrow">Decision tree</p>
+          <h2>AP Workflow Navigator</h2>
+          <p>Use one combined decision tool to move through the full AP flow, starting from email intake or directly from the Zone tracker.</p>
+        </div>
+        <div class="workflow-grid">
+          <article class="glass-card workflow-card" data-workflow="ap">
+            <div class="workflow-toolbar">
+              <div>
+                <span class="small-label">Combined workflow</span>
+                <h3>Follow the invoice path</h3>
+              </div>
+              <div class="toggle-group" aria-label="Workflow display modes">
+                <label><input type="checkbox" data-toggle="learning" data-workflow-toggle="ap" checked /> Learning</label>
+                <label><input type="checkbox" data-toggle="quick" data-workflow-toggle="ap" /> Quick</label>
+              </div>
+            </div>
+            <div class="start-selector" aria-label="Workflow start options">
+              <button class="button primary is-active" type="button" data-workflow="ap" data-start-node="reviewEmail">Start from Email</button>
+              <button class="button secondary" type="button" data-workflow="ap" data-start-node="openTracker">Start from Zone Tracker</button>
+            </div>
+            <div class="progress-wrap">
+              <div class="progress-meta">
+                <span data-progress-label="ap">Step 1</span>
+                <span data-progress-percent="ap">0%</span>
+              </div>
+              <div class="progress-track"><span data-progress-bar="ap"></span></div>
+            </div>
+            <div class="breadcrumb" data-breadcrumb="ap"></div>
+            <div class="step-card">
+              <p class="step-type" data-step-type="ap"></p>
+              <h3 data-step-title="ap"></h3>
+              <p data-step-body="ap"></p>
+              <p class="learning-note" data-learning-note="ap"></p>
+              <div class="decision-actions" data-actions="ap"></div>
+            </div>
+            <div class="workflow-footer">
+              <button class="button ghost" type="button" data-back="ap">Back</button>
+              <button class="button ghost" type="button" data-restart="ap">Restart</button>
+              <button class="button secondary" type="button" data-copy="ap">Copy next step</button>
+            </div>
+          </article>
+          <aside class="workflow-aside glass-card">
+            <h3>AP review control points</h3>
+            <ul>
+              <li>Confirm the email contains an invoice before routing work forward.</li>
+              <li>Search Zone to avoid duplicate upload or rework.</li>
+              <li>Compare the invoice PO to the PO dropdown before processing.</li>
+              <li>Confirm the invoice has a matching IR listed under the PO.</li>
+              <li>Route missing PO, mismatch, and missing IR exceptions to the right owner.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="exceptions">
+        <div class="section-heading">
+          <p class="eyebrow">Searchable support</p>
+          <h2>Exception Guide</h2>
+          <p>Use these cards when the decision tree lands on a blocker or escalation point.</p>
+        </div>
+        <div class="search-shell">
+          <input id="exceptionSearch" type="search" placeholder="Search exceptions by issue, owner, or next step..." />
+        </div>
+        <div class="card-grid" id="exceptionGrid"></div>
+      </section>
+
+      <section class="section" id="glossary">
+        <div class="section-heading">
+          <p class="eyebrow">Reference library</p>
+          <h2>Tools Glossary</h2>
+          <p>Quick explanations of the tools, documents, and roles that appear in the AP workflow.</p>
+        </div>
+        <div class="card-grid" id="glossaryGrid"></div>
+      </section>
+
+      <section class="section dashboard-section" id="dashboard">
+        <div class="section-heading">
+          <p class="eyebrow">Sample data</p>
+          <h2>KPI Dashboard</h2>
+          <p>Mock metrics showing how this workflow could support AP visibility and continuous improvement.</p>
+        </div>
+        <div class="metric-grid" id="metricGrid"></div>
+        <div class="glass-card chart-panel">
+          <div class="chart-heading">
+            <h3>Weekly invoice outcomes</h3>
+            <p>Sample throughput by routing result</p>
+          </div>
+          <div class="bar-chart" id="barChart" aria-label="Weekly invoice outcomes chart"></div>
+        </div>
+      </section>
+
+      <section class="section about-section" id="about">
+        <div class="glass-card about-card">
+          <p class="eyebrow">Portfolio project</p>
+          <h2>About Project</h2>
+          <p>
+            AP Process Navigator converts an Accounts Payable process map into an interactive decision-support
+            tool. It shows how static workflow documentation can become a practical assistant for invoice routing,
+            validation, review, and escalation.
+          </p>
+          <div class="about-pill-grid">
+            <span>Business process analysis</span>
+            <span>Accounting systems</span>
+            <span>Workflow documentation</span>
+            <span>Front-end development</span>
+            <span>User experience design</span>
+            <span>Internal controls awareness</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="script.js"></script>
+  </body>
+</html>
